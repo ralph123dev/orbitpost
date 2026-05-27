@@ -1,0 +1,6 @@
+{
+  "name": "Orbit Post",
+  "description": "Redéfinissez votre orbite sociale. Le réseau social de demain qui fusionne créativité, sécurité et fonctionnement hors-ligne.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
