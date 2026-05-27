@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, ArrowDownToLine, Menu, X, Orbit } from 'lucide-react';
 
-export default function Navbar() {
+interface NavbarProps {
+  onDownloadClick?: () => void;
+}
+
+export default function Navbar({ onDownloadClick }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -87,7 +91,7 @@ export default function Navbar() {
         {/* Action Button */}
         <div className="hidden md:flex items-center gap-4">
           <button
-            onClick={() => alert('Mise à niveau en cours sur nos serveurs')}
+            onClick={onDownloadClick}
             className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent overflow-hidden group shadow-[0_4px_20px_rgba(99,102,241,0.2)] hover:shadow-[0_4px_25px_rgba(99,102,241,0.35)] transition-all duration-300 active:scale-95 cursor-pointer"
           >
             <div className="absolute inset-0 bg-linear-to-r from-orbit-accent to-orbit-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -143,7 +147,7 @@ export default function Navbar() {
               </button>
               <div className="h-px bg-slate-100 my-1" />
               <button
-                onClick={() => alert('Mise à niveau en cours sur nos serveurs')}
+                onClick={onDownloadClick}
                 className="w-full text-center py-3 rounded-xl text-sm font-semibold text-white bg-linear-to-r from-orbit-primary to-orbit-accent flex items-center justify-center gap-2 shadow-lg shadow-indigo-100 cursor-pointer border-none"
               >
                 <ArrowDownToLine className="w-4 h-4" />

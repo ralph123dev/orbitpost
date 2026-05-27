@@ -2,7 +2,11 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Award, Shield, Cpu, Flame, Smartphone, Globe, MessageCircle } from 'lucide-react';
 
-export default function AboutSection() {
+interface AboutSectionProps {
+  onDownloadClick?: () => void;
+}
+
+export default function AboutSection({ onDownloadClick }: AboutSectionProps) {
   return (
     <section id="about" className="py-24 relative overflow-hidden bg-white border-t border-slate-200">
       <div className="absolute top-0 left-1/4 w-80 h-80 rounded-full bg-orbit-glow/5 blur-[100px] pointer-events-none" />
@@ -98,7 +102,7 @@ export default function AboutSection() {
 
             <div className="flex flex-wrap gap-4 mt-4">
               <button
-                onClick={() => alert('Mise à niveau en cours sur nos serveurs')}
+                onClick={onDownloadClick}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent hover:opacity-95 transition-opacity duration-200 shadow-xs cursor-pointer"
               >
                 <Smartphone className="w-4 h-4" />

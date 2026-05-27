@@ -4,9 +4,10 @@ import { ArrowUpRight, Shield, Zap, Sparkles, Orbit, Smartphone } from 'lucide-r
 
 interface HeroProps {
   onExploreDemo: () => void;
+  onDownloadClick: () => void;
 }
 
-export default function Hero({ onExploreDemo }: HeroProps) {
+export default function Hero({ onExploreDemo, onDownloadClick }: HeroProps) {
   return (
     <section className="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden bg-space-950">
       {/* Dynamic Cosmic Background */}
@@ -77,7 +78,7 @@ export default function Hero({ onExploreDemo }: HeroProps) {
             </button>
 
             <button
-              onClick={() => alert('Mise à upgrade en cours sur nos serveurs')}
+              onClick={onDownloadClick}
               className="px-8 py-4 rounded-full font-semibold text-sm text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 flex items-center gap-2 shadow-sm cursor-pointer"
             >
               <span>Télécharger l'APK</span>

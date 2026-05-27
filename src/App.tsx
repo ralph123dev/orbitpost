@@ -7,6 +7,7 @@ import WhyOrbit from './components/WhyOrbit';
 import PhoneSimulator from './components/PhoneSimulator';
 import AboutSection from './components/AboutSection';
 import DownloadSection from './components/DownloadSection';
+import TimerModal from './components/TimerModal';
 import { 
   Orbit, ArrowDownToLine, MessageSquare, Shield, Zap, Sparkles, 
   ChevronRight, Smartphone, Eye, Heart, Database, Send, Radio
@@ -16,6 +17,9 @@ export default function App() {
   // Syncs the active layout state of the Interactive Phone Simulator
   // 'feed' | 'messenger' | 'videoplus' | 'studio'
   const [simulatorActiveTab, setSimulatorActiveTab] = useState<string>('feed');
+  
+  // Timer modal state for download button
+  const [showTimer, setShowTimer] = useState(false);
 
   // Interactive handler from landing page sections or Bento Grid
   const handleSelectFeatureFromGrid = (featureId: string) => {
@@ -51,19 +55,23 @@ export default function App() {
     }
   };
 
+  const handleDownloadClick = () => {
+    setShowTimer(true);
+  };
+
   return (
     <div className="min-h-screen relative bg-slate-50 text-slate-800 selection:bg-orbit-accent selection:text-white antialiased">
       {/* Dynamic ambient grid overlay wrapping the entire ecosystem */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),_linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#fff_70%,transparent_100%)] pointer-events-none -z-10" />
 
       {/* Global Header */}
-      <Navbar />
+      <Navbar onDownloadClick={handleDownloadClick} />
 
       {/* Main launch space */}
       <main className="relative">
         
         {/* Elite hero canvas */}
-        <Hero onExploreDemo={() => scrollToSection('simulator')} />
+        <Hero onExploreDemo={() => scrollToSection('simulator')} onDownloadClick={handleDownloadClick} />
 
         {/* Feature sets (Bento Grid) linked to Simulator */}
         <Features 
@@ -184,10 +192,10 @@ export default function App() {
         <WhyOrbit />
 
         {/* Refined "About L'Equipe" profile section */}
-        <AboutSection />
+        <AboutSection onDownloadClick={handleDownloadClick} />
 
         {/* Installation and QR Code downloads card section */}
-        <DownloadSection />
+        <DownloadSection onDownloadClick={handleDownloadClick} />
 
       </main>
 
@@ -206,7 +214,7 @@ export default function App() {
           </p>
 
           <div className="flex gap-4 text-xs font-mono">
-            <button onClick={() => alert('Mise à niveau en cours sur nos serveurs')} className="hover:text-orbit-primary transition-colors text-slate-700 font-bold cursor-pointer bg-none border-none p-0">
+            <button onClick={handleDownloadClick} className="hover:text-orbit-primary transition-colors text-slate-700 font-bold cursor-pointer bg-none border-none p-0">
               APK PACKAGE
             </button>
             <span className="text-slate-300">•</span>
@@ -216,6 +224,9 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Timer Modal */}
+      <TimerModal isOpen={showTimer} onClose={() => setShowTimer(false)} durationSeconds={3600} />
     </div>
   );
 }
