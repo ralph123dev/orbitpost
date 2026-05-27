@@ -77,7 +77,7 @@ export default function Hero({ onExploreDemo }: HeroProps) {
             </button>
 
             <a
-              href="https://expo.dev/artifacts/eas/fzWc1UycisqQeKoPvz3XwL.apk"
+              href="https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-full font-semibold text-sm text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 flex items-center gap-2 shadow-sm"

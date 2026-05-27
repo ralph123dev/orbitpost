@@ -98,7 +98,7 @@ export default function AboutSection() {
 
             <div className="flex flex-wrap gap-4 mt-4">
               <a
-                href="https://expo.dev/artifacts/eas/fzWc1UycisqQeKoPvz3XwL.apk"
+                href="https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent hover:opacity-95 transition-opacity duration-200 shadow-xs"

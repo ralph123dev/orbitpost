@@ -206,7 +206,7 @@ export default function App() {
           </p>
 
           <div className="flex gap-4 text-xs font-mono">
-            <a href="https://expo.dev/artifacts/eas/fzWc1UycisqQeKoPvz3XwL.apk" target="_blank" rel="noopener noreferrer" className="hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+            <a href="https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk" target="_blank" rel="noopener noreferrer" className="hover:text-orbit-primary transition-colors text-slate-700 font-bold">
               APK PACKAGE
             </a>
             <span className="text-slate-300">•</span>
