@@ -10,7 +10,7 @@ export default function DownloadSection({ onDownloadClick }: DownloadSectionProp
   const [selectedOS, setSelectedOS] = useState<'android' | 'ios'>('android');
   const [copiedLink, setCopiedLink] = useState(false);
 
-  const apkUrl = "https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk";
+  const apkUrl = "https://expo.dev/artifacts/eas/kHog5triepqpC5gjU1Ln2J.apk";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(apkUrl);

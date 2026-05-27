@@ -7,7 +7,6 @@ import WhyOrbit from './components/WhyOrbit';
 import PhoneSimulator from './components/PhoneSimulator';
 import AboutSection from './components/AboutSection';
 import DownloadSection from './components/DownloadSection';
-import TimerModal from './components/TimerModal';
 import { 
   Orbit, ArrowDownToLine, MessageSquare, Shield, Zap, Sparkles, 
   ChevronRight, Smartphone, Eye, Heart, Database, Send, Radio
@@ -18,8 +17,7 @@ export default function App() {
   // 'feed' | 'messenger' | 'videoplus' | 'studio'
   const [simulatorActiveTab, setSimulatorActiveTab] = useState<string>('feed');
   
-  // Timer modal state for download button
-  const [showTimer, setShowTimer] = useState(false);
+  const apkUrl = "https://expo.dev/artifacts/eas/kHog5triepqpC5gjU1Ln2J.apk";
 
   // Interactive handler from landing page sections or Bento Grid
   const handleSelectFeatureFromGrid = (featureId: string) => {
@@ -56,7 +54,12 @@ export default function App() {
   };
 
   const handleDownloadClick = () => {
-    setShowTimer(true);
+    // Open APK in new tab (trigger download)
+    try {
+      window.open(apkUrl, '_blank', 'noopener,noreferrer');
+    } catch (e) {
+      // ignore popup errors
+    }
   };
 
   return (
@@ -225,8 +228,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Timer Modal */}
-      <TimerModal isOpen={showTimer} onClose={() => setShowTimer(false)} durationSeconds={3600} />
+      {/* Timer Modal removed — downloads open directly */}
     </div>
   );
 }
