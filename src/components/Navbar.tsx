@@ -86,16 +86,14 @@ export default function Navbar() {
 
         {/* Action Button */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent overflow-hidden group shadow-[0_4px_20px_rgba(99,102,241,0.2)] hover:shadow-[0_4px_25px_rgba(99,102,241,0.35)] transition-all duration-300 active:scale-95"
+          <button
+            onClick={() => alert('Mise à niveau en cours sur nos serveurs')}
+            className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent overflow-hidden group shadow-[0_4px_20px_rgba(99,102,241,0.2)] hover:shadow-[0_4px_25px_rgba(99,102,241,0.35)] transition-all duration-300 active:scale-95 cursor-pointer"
           >
             <div className="absolute inset-0 bg-linear-to-r from-orbit-accent to-orbit-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <ArrowDownToLine className="w-4 h-4 relative z-10 animate-bounce group-hover:animate-none" />
             <span className="relative z-10 uppercase tracking-wider">Installer APK</span>
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -144,15 +142,13 @@ export default function Navbar() {
                 L'Équipe
               </button>
               <div className="h-px bg-slate-100 my-1" />
-              <a
-                href="https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center py-3 rounded-xl text-sm font-semibold text-white bg-linear-to-r from-orbit-primary to-orbit-accent flex items-center justify-center gap-2 shadow-lg shadow-indigo-100"
+              <button
+                onClick={() => alert('Mise à niveau en cours sur nos serveurs')}
+                className="w-full text-center py-3 rounded-xl text-sm font-semibold text-white bg-linear-to-r from-orbit-primary to-orbit-accent flex items-center justify-center gap-2 shadow-lg shadow-indigo-100 cursor-pointer border-none"
               >
                 <ArrowDownToLine className="w-4 h-4" />
                 <span>TÉLÉCHARGER L'APK (EXPO)</span>
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

@@ -206,9 +206,9 @@ export default function App() {
           </p>
 
           <div className="flex gap-4 text-xs font-mono">
-            <a href="https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk" target="_blank" rel="noopener noreferrer" className="hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+            <button onClick={() => alert('Mise à niveau en cours sur nos serveurs')} className="hover:text-orbit-primary transition-colors text-slate-700 font-bold cursor-pointer bg-none border-none p-0">
               APK PACKAGE
-            </a>
+            </button>
             <span className="text-slate-300">•</span>
             <a href="mailto:nativereact42@gmail.com" className="hover:text-orbit-primary transition-colors text-slate-700 font-bold">
               SUPPORT CLIENTS

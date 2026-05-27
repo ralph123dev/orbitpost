@@ -63,15 +63,13 @@ export default function DownloadSection() {
               {selectedOS === 'android' ? (
                 <div className="space-y-4 pt-2">
                   <div className="flex flex-wrap gap-4">
-                    <a
-                      href={apkUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-3.5 rounded-2xl font-semibold font-mono text-xs uppercase tracking-wider text-white bg-linear-to-r from-orbit-primary to-orbit-accent hover:opacity-95 shadow-md flex items-center gap-2"
+                    <button
+                      onClick={() => alert('Mise à niveau en cours sur nos serveurs')}
+                      className="px-6 py-3.5 rounded-2xl font-semibold font-mono text-xs uppercase tracking-wider text-white bg-linear-to-r from-orbit-primary to-orbit-accent hover:opacity-95 shadow-md flex items-center gap-2 cursor-pointer"
                     >
                       <ArrowDownToLine className="w-4 h-4 animate-bounce" />
                       <span>Télécharger l'APK officiel</span>
-                    </a>
+                    </button>
 
                     <button
                       onClick={handleCopy}

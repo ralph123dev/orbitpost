@@ -97,15 +97,13 @@ export default function AboutSection() {
             </p>
 
             <div className="flex flex-wrap gap-4 mt-4">
-              <a
-                href="https://expo.dev/artifacts/eas/qJk5NDSvQdWD8jBWi2s3s8.apk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent hover:opacity-95 transition-opacity duration-200 shadow-xs"
+              <button
+                onClick={() => alert('Mise à niveau en cours sur nos serveurs')}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent hover:opacity-95 transition-opacity duration-200 shadow-xs cursor-pointer"
               >
                 <Smartphone className="w-4 h-4" />
                 <span>Consulter Version d'essai APK</span>
-              </a>
+              </button>
 
               <a
                 href="mailto:nativereact42@gmail.com"
