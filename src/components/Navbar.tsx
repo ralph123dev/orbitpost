@@ -84,7 +84,7 @@ export default function Navbar({ onDownloadClick }: NavbarProps) {
             onClick={() => scrollToSection('about')}
             className="text-sm font-medium text-slate-600 hover:text-orbit-primary transition-colors cursor-pointer"
           >
-            L'Équipe
+            Concepteur
           </button>
         </nav>
 
@@ -143,7 +143,7 @@ export default function Navbar({ onDownloadClick }: NavbarProps) {
                 onClick={() => scrollToSection('about')}
                 className="text-base font-medium text-slate-700 hover:text-slate-900 text-left py-2"
               >
-                L'Équipe
+                Concepteur
               </button>
               <div className="h-px bg-slate-100 my-1" />
               <button

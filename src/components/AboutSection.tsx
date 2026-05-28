@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Award, Shield, Cpu, Flame, Smartphone, Globe, MessageCircle } from 'lucide-react';
+import moiImage from '../../assets/img/moi.jpg';
 
 interface AboutSectionProps {
   onDownloadClick?: () => void;
@@ -29,12 +30,12 @@ export default function AboutSection({ onDownloadClick }: AboutSectionProps) {
               
               <div className="flex flex-col gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-linear-to-tr from-orbit-primary to-orbit-accent flex items-center justify-center text-white text-lg font-black shadow-[0_4px_15px_rgba(99,102,241,0.2)]">
-                    OT
+                  <div className="w-20 h-20 rounded-3xl overflow-hidden border border-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
+                    <img src={moiImage} alt="Concepteur" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-xl text-slate-800">Orbit Team</h3>
-                    <p className="text-xs font-mono text-orbit-accent uppercase tracking-wider">Créateurs d'Alternatives</p>
+                    <h3 className="font-display font-bold text-xl text-slate-800">Concepteur</h3>
+                    <p className="text-xs font-mono text-orbit-accent uppercase tracking-wider">Créateur d'Alternatives</p>
                   </div>
                 </div>
 
@@ -114,7 +115,7 @@ export default function AboutSection({ onDownloadClick }: AboutSectionProps) {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-slate-700 bg-slate-50 border border-slate-205 hover:bg-slate-100 transition-all duration-200 shadow-xs"
               >
                 <MessageCircle className="w-4 h-4 text-slate-500" />
-                <span>Contacter l'équipe</span>
+                <span>Contacter le concepteur</span>
               </a>
             </div>
           </div>
