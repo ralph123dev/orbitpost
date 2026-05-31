@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, ArrowDownToLine, Menu, X, Orbit } from 'lucide-react';
+import logoImg from '../../assets/img/logo.png';
 
 interface NavbarProps {
   onDownloadClick?: () => void;
@@ -42,14 +43,11 @@ export default function Navbar({ onDownloadClick }: NavbarProps) {
           className="flex items-center gap-3 cursor-pointer group"
           id="nav-logo"
         >
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-linear-to-tr from-orbit-primary to-orbit-accent shadow-md shadow-indigo-100">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-              className="absolute inset-[-4px] rounded-full border border-dashed border-orbit-accent/40 group-hover:border-orbit-glow/80"
-            />
-            <Orbit className="w-5 h-5 text-white" />
-          </div>
+          <img 
+            src={logoImg} 
+            alt="Orbit Post Logo" 
+            className="w-10 h-10 object-contain group-hover:opacity-80 transition-opacity"
+          />
           <div>
             <span className="font-display font-bold text-xl tracking-tight text-slate-800 group-hover:text-orbit-primary transition-all">
               Orbit <span className="text-orbit-accent font-medium text-lg">Post</span>
