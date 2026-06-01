@@ -13,8 +13,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  // Syncs the active layout state of the Interactive Phone Simulator
-  // 'feed' | 'messenger' | 'videoplus' | 'studio'
+ 
   const [simulatorActiveTab, setSimulatorActiveTab] = useState<string>('feed');
   
   const apkUrl = "https://expo.dev/artifacts/eas/kHog5triepqpC5gjU1Ln2J.apk";
