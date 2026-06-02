@@ -15,8 +15,23 @@ import {
 export default function App() {
  
   const [simulatorActiveTab, setSimulatorActiveTab] = useState<string>('feed');
+  const [showPopup, setShowPopup] = useState<boolean>(true);
   
   const apkUrl = "https://expo.dev/artifacts/eas/kHog5triepqpC5gjU1Ln2J.apk";
+  const webUrl = "https://weborbit-mu.vercel.app/";
+
+  const handleOpenWebVersion = () => {
+    try {
+      window.open(webUrl, '_blank', 'noopener,noreferrer');
+    } catch (e) {
+      // ignore popup errors
+    }
+    setShowPopup(false);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
 
   // Interactive handler from landing page sections or Bento Grid
   const handleSelectFeatureFromGrid = (featureId: string) => {
@@ -226,6 +241,45 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {showPopup ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-6">
+          <div className="max-w-md w-full rounded-[28px] bg-white/95 border border-slate-200 shadow-[0_30px_80px_rgba(15,23,42,0.18)] p-8 text-slate-900">
+            <div className="space-y-4 text-center">
+              <div className="mx-auto h-14 w-14 rounded-full bg-orbit-accent/10 flex items-center justify-center text-orbit-accent text-2xl font-bold">
+                🌐
+              </div>
+              <h2 className="text-3xl font-display font-bold">Bienvenue sur Orbit</h2>
+              <p className="text-slate-600">Choisissez une option pour visiter la version web ou télécharger l’application sur Android.</p>
+            </div>
+
+            <div className="mt-8 grid gap-4">
+              <button
+                onClick={handleOpenWebVersion}
+                className="w-full rounded-2xl bg-orbit-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-orbit-accent"
+              >
+                Visiter la version web
+              </button>
+              <button
+                onClick={() => {
+                  handleDownloadClick();
+                  handleClosePopup();
+                }}
+                className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition hover:bg-slate-100"
+              >
+                Télécharger l'application
+              </button>
+            </div>
+
+            <button
+              onClick={handleClosePopup}
+              className="mt-6 block mx-auto text-xs font-medium uppercase tracking-[0.18em] text-slate-500 hover:text-slate-900"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       {/* Timer Modal removed — downloads open directly */}
     </div>
