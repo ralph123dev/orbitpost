@@ -345,6 +345,7 @@ export default function PhoneSimulator({ initialTab = 'feed' }: PhoneSimulatorPr
                           <img 
                             src={post.avatar} 
                             alt={post.username} 
+                            width="32" height="32" loading="lazy" 
                             className="w-8 h-8 rounded-full object-cover border border-slate-100"
                             referrerPolicy="no-referrer"
                           />
@@ -367,7 +368,8 @@ export default function PhoneSimulator({ initialTab = 'feed' }: PhoneSimulatorPr
                           <div className="rounded-xl overflow-hidden border border-slate-100 mb-3 bg-slate-50">
                             <img 
                               src={post.image} 
-                              alt="attached content" 
+                            alt="Contenu attaché" 
+                            width="600" height="180" loading="lazy" 
                               className="w-full h-32 object-cover"
                               referrerPolicy="no-referrer"
                             />
@@ -440,7 +442,7 @@ export default function PhoneSimulator({ initialTab = 'feed' }: PhoneSimulatorPr
                             isSel ? 'bg-purple-50 text-purple-705 border border-purple-200' : 'text-slate-500 hover:text-slate-800 bg-slate-50 border border-transparent'
                           }`}
                         >
-                          <img src={th.avatar} alt={th.name} className="w-4 h-4 rounded-full border border-slate-100" />
+                          <img src={th.avatar} alt={th.name} width="16" height="16" loading="lazy" className="w-4 h-4 rounded-full border border-slate-100" />
                           <span>{th.name.split(' ')[0]}</span>
                         </button>
                       );
