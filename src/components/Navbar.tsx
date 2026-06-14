@@ -46,7 +46,8 @@ export default function Navbar({ onDownloadClick }: NavbarProps) {
           <img 
             src={logoImg} 
             alt="Orbit Post Logo" 
-            width="40" height="40"
+            width="40"
+            height="40"
             className="w-10 h-10 object-contain group-hover:opacity-80 transition-opacity"
           />
           <div>

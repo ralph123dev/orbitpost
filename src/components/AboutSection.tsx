@@ -31,9 +31,7 @@ export default function AboutSection({ onDownloadClick }: AboutSectionProps) {
               <div className="flex flex-col gap-6">
                 <div className="flex items-center gap-4">
                   <div className="w-20 h-20 rounded-3xl overflow-hidden border border-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
-                    <img src={moiImage} alt="Concepteur" width="80" height="80" loading="lazy" className="w-full h-full object-cover" />
-                  </div>
-                  <div>
+                    <img src={moiImage} alt="Portrait du concepteur Orbit Post" width="80" height="80" loading="lazy" className="w-full h-full object-cover" />
                     <h3 className="font-display font-bold text-xl text-slate-800">Concepteur</h3>
                     <p className="text-xs font-mono text-orbit-accent uppercase tracking-wider">Créateur d'Alternatives</p>
                   </div>

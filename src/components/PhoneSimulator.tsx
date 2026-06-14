@@ -345,7 +345,9 @@ export default function PhoneSimulator({ initialTab = 'feed' }: PhoneSimulatorPr
                           <img 
                             src={post.avatar} 
                             alt={post.username} 
-                            width="32" height="32" loading="lazy" 
+                            width="32"
+                            height="32"
+                            loading="lazy"
                             className="w-8 h-8 rounded-full object-cover border border-slate-100"
                             referrerPolicy="no-referrer"
                           />
@@ -368,8 +370,10 @@ export default function PhoneSimulator({ initialTab = 'feed' }: PhoneSimulatorPr
                           <div className="rounded-xl overflow-hidden border border-slate-100 mb-3 bg-slate-50">
                             <img 
                               src={post.image} 
-                            alt="Contenu attaché" 
-                            width="600" height="180" loading="lazy" 
+                              alt="Contenu média joint à la publication" 
+                              width="640"
+                              height="192"
+                              loading="lazy"
                               className="w-full h-32 object-cover"
                               referrerPolicy="no-referrer"
                             />
