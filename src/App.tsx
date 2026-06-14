@@ -16,6 +16,7 @@ export default function App() {
  
   const [simulatorActiveTab, setSimulatorActiveTab] = useState<string>('feed');
   const [showPopup, setShowPopup] = useState<boolean>(true);
+  const [showMaintenanceMessage, setShowMaintenanceMessage] = useState<boolean>(false);
   
   const apkUrl = "https://expo.dev/artifacts/eas/kHog5triepqpC5gjU1Ln2J.apk";
   const webUrl = "https://weborbit-mu.vercel.app/";
@@ -68,12 +69,8 @@ export default function App() {
   };
 
   const handleDownloadClick = () => {
-    // Open APK in new tab (trigger download)
-    try {
-      window.open(apkUrl, '_blank', 'noopener,noreferrer');
-    } catch (e) {
-      // ignore popup errors
-    }
+    // Show maintenance message instead of downloading
+    setShowMaintenanceMessage(true);
   };
 
   return (
@@ -276,6 +273,27 @@ export default function App() {
               className="mt-6 block mx-auto text-xs font-medium uppercase tracking-[0.18em] text-slate-500 hover:text-slate-900"
             >
               Fermer
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {showMaintenanceMessage ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-6">
+          <div className="max-w-md w-full rounded-[28px] bg-white/95 border border-slate-200 shadow-[0_30px_80px_rgba(15,23,42,0.18)] p-8 text-slate-900">
+            <div className="space-y-4 text-center">
+              <div className="mx-auto h-14 w-14 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 text-2xl font-bold">
+                🔧
+              </div>
+              <h2 className="text-3xl font-display font-bold">Application en Maintenance</h2>
+              <p className="text-slate-600">L'application est actuellement en maintenance. Nous travaillons dur pour vous offrir une meilleure expérience. Veuillez réessayer bientôt.</p>
+            </div>
+
+            <button
+              onClick={() => setShowMaintenanceMessage(false)}
+              className="mt-8 w-full rounded-2xl bg-orbit-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-orbit-accent"
+            >
+              Comprendre
             </button>
           </div>
         </div>
