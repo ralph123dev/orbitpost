@@ -18,7 +18,7 @@ export default function App() {
   const [showPopup, setShowPopup] = useState<boolean>(true);
   const [showMaintenanceMessage, setShowMaintenanceMessage] = useState<boolean>(false);
   
-  const apkUrl = "https://expo.dev/artifacts/eas/kHog5triepqpC5gjU1Ln2J.apk";
+  const apkUrl = "https://expo.dev/artifacts/eas/B0W56-mT2vSQ9-4inXdbcZ-wiIhkap__qSSJ8cOjUFc.apk";
   const webUrl = "https://weborbit-mu.vercel.app/";
 
   const handleOpenWebVersion = () => {
@@ -69,8 +69,12 @@ export default function App() {
   };
 
   const handleDownloadClick = () => {
-    // Show maintenance message instead of downloading
-    setShowMaintenanceMessage(true);
+    try {
+      window.open(apkUrl, '_blank', 'noopener,noreferrer');
+    } catch (e) {
+      window.location.assign(apkUrl);
+    }
+    setShowMaintenanceMessage(false);
   };
 
   return (
@@ -227,10 +231,25 @@ export default function App() {
             © {new Date().getFullYear()} Orbit Post. Tous droits réservés. Développé de manière éthique et souveraine par la Orbit Team.
           </p>
 
-          <div className="flex gap-4 text-xs font-mono">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 text-xs font-mono">
             <button onClick={handleDownloadClick} className="hover:text-orbit-primary transition-colors text-slate-700 font-bold cursor-pointer bg-none border-none p-0">
               APK PACKAGE
             </button>
+            <span className="text-slate-300">•</span>
+            <a href="https://web.facebook.com/richar.franc.2025" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+              <ion-icon name="logo-facebook"></ion-icon>
+              Facebook
+            </a>
+            <span className="text-slate-300">•</span>
+            <a href="https://www.instagram.com/ralph_deveveloppeur/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+              <ion-icon name="logo-instagram"></ion-icon>
+              Instagram
+            </a>
+            <span className="text-slate-300">•</span>
+            <a href="https://wa.me/237689476780" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+              WhatsApp
+            </a>
             <span className="text-slate-300">•</span>
             <a href="mailto:nativereact42@gmail.com" className="hover:text-orbit-primary transition-colors text-slate-700 font-bold">
               SUPPORT CLIENTS
