@@ -13,12 +13,12 @@ import {
 } from 'lucide-react';
 
 export default function App() {
- 
+  
   const [simulatorActiveTab, setSimulatorActiveTab] = useState<string>('feed');
   const [showPopup, setShowPopup] = useState<boolean>(true);
   const [showMaintenanceMessage, setShowMaintenanceMessage] = useState<boolean>(false);
   
-  const apkUrl = "https://expo.dev/artifacts/eas/B0W56-mT2vSQ9-4inXdbcZ-wiIhkap__qSSJ8cOjUFc.apk";
+  const apkUrl = "https://expo.dev/artifacts/eas/VMlWyFPqypZtR9_RSYhJC7txAZmcNkXQNLydSe9CngU.apk";
   const webUrl = "https://weborbit-mu.vercel.app/";
 
   const handleOpenWebVersion = () => {
@@ -233,7 +233,7 @@ export default function App() {
 
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 text-xs font-mono">
             <button onClick={handleDownloadClick} className="hover:text-orbit-primary transition-colors text-slate-700 font-bold cursor-pointer bg-none border-none p-0">
-              APK PACKAGE
+              Télécharger
             </button>
             <span className="text-slate-300">•</span>
             <a href="https://web.facebook.com/richar.franc.2025" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
