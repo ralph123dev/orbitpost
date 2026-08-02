@@ -236,7 +236,7 @@ export default function App() {
               Télécharger
             </button>
             <span className="text-slate-300">•</span>
-            <a href="https://web.facebook.com/richar.franc.2025" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
               <ion-icon name="logo-facebook"></ion-icon>
               Facebook
             </a>
