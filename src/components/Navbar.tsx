@@ -30,17 +30,19 @@ export default function Navbar({ onDownloadClick }: NavbarProps) {
   return (
     <header
       id="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`position-fixed top-0 start-0 end-0 z-3 transition-all ${
         scrolled
-          ? 'bg-white/95 border-b border-slate-200 backdrop-blur-md shadow-md/5 py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-white bg-opacity-95 border-bottom border-secondary-subtle py-3 shadow-sm'
+          : 'bg-transparent py-4'
       }`}
+      style={{ transition: 'all 0.3s ease' }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="container d-flex align-items-center justify-content-between">
         {/* Brand Logo */}
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex items-center gap-3 cursor-pointer group"
+          className="d-flex align-items-center gap-3 cursor-pointer"
+          style={{ cursor: 'pointer' }}
           id="nav-logo"
         >
           <img 
@@ -48,62 +50,66 @@ export default function Navbar({ onDownloadClick }: NavbarProps) {
             alt="Orbit Post Logo" 
             width="40"
             height="40"
-            className="w-10 h-10 object-contain group-hover:opacity-80 transition-opacity"
+            className="img-fluid"
+            style={{ width: '40px', height: '40px' }}
           />
           <div>
-            <span className="font-display font-bold text-xl tracking-tight text-slate-800 group-hover:text-orbit-primary transition-all">
-              Orbit <span className="text-orbit-accent font-medium text-lg">Post</span>
+            <span className="font-display fw-bold fs-5 text-dark">
+              Orbit <span className="text-orbit-accent fw-normal fs-6">Post</span>
             </span>
-            <div className="text-[9px] font-mono tracking-widest text-[#a855f7]/85 uppercase -mt-1 scale-90 origin-left">
+            <div className="text-uppercase font-mono text-purple small" style={{ fontSize: '9px', letterSpacing: '0.1em', marginTop: '-3px' }}>
               v1.4 - SECURE
             </div>
           </div>
         </div>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-8" id="nav-desktop-menu">
+        <nav className="d-none d-md-flex align-items-center gap-4" id="nav-desktop-menu">
           <button
             onClick={() => scrollToSection('features')}
-            className="text-sm font-medium text-slate-600 hover:text-orbit-primary transition-colors cursor-pointer"
+            className="btn btn-link text-decoration-none text-secondary hover-text-primary fw-semibold py-0"
+            style={{ cursor: 'pointer' }}
           >
             Fonctionnalités
           </button>
           <button
             onClick={() => scrollToSection('why-orbit')}
-            className="text-sm font-medium text-slate-600 hover:text-orbit-primary transition-colors cursor-pointer"
+            className="btn btn-link text-decoration-none text-secondary hover-text-primary fw-semibold py-0"
+            style={{ cursor: 'pointer' }}
           >
             Pourquoi Orbit
           </button>
           <button
             onClick={() => scrollToSection('simulator')}
-            className="text-sm font-medium text-slate-600 hover:text-orbit-primary transition-colors cursor-pointer"
+            className="btn btn-link text-decoration-none text-secondary hover-text-primary fw-semibold py-0"
+            style={{ cursor: 'pointer' }}
           >
             Démo Interactive
           </button>
           <button
             onClick={() => scrollToSection('about')}
-            className="text-sm font-medium text-slate-600 hover:text-orbit-primary transition-colors cursor-pointer"
+            className="btn btn-link text-decoration-none text-secondary hover-text-primary fw-semibold py-0"
+            style={{ cursor: 'pointer' }}
           >
             Concepteur
           </button>
         </nav>
 
         {/* Action Button */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="d-none d-md-flex align-items-center">
           <button
             onClick={onDownloadClick}
-            className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold font-mono text-white bg-linear-to-r from-orbit-primary to-orbit-accent overflow-hidden group shadow-[0_4px_20px_rgba(99,102,241,0.2)] hover:shadow-[0_4px_25px_rgba(99,102,241,0.35)] transition-all duration-300 active:scale-95 cursor-pointer"
+            className="btn btn-orbit-gradient rounded-pill px-4 py-2 text-xs font-mono fw-semibold d-flex align-items-center gap-2"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-orbit-accent to-orbit-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <ArrowDownToLine className="w-4 h-4 relative z-10 animate-bounce group-hover:animate-none" />
-            <span className="relative z-10 uppercase tracking-wider">Installer APK</span>
+            <ArrowDownToLine className="w-4 h-4" />
+            <span className="text-uppercase tracking-wider">Installer APK</span>
           </button>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
+          className="btn btn-link text-secondary p-2 d-md-none border-0 shadow-none"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -118,40 +124,41 @@ export default function Navbar({ onDownloadClick }: NavbarProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-b border-slate-200 bg-white/95 backdrop-blur-xl"
+            className="d-md-none border-bottom border-secondary-subtle bg-white bg-opacity-95"
+            style={{ backdropFilter: 'blur(10px)' }}
           >
-            <div className="px-6 py-6 flex flex-col gap-5">
+            <div className="p-4 d-flex flex-column gap-3">
               <button
                 onClick={() => scrollToSection('features')}
-                className="text-base font-medium text-slate-700 hover:text-slate-900 text-left py-2"
+                className="btn btn-link text-decoration-none text-dark fw-semibold text-start py-2"
               >
                 Fonctionnalités
               </button>
               <button
                 onClick={() => scrollToSection('why-orbit')}
-                className="text-base font-medium text-slate-700 hover:text-slate-900 text-left py-2"
+                className="btn btn-link text-decoration-none text-dark fw-semibold text-start py-2"
               >
                 Pourquoi Orbit
               </button>
               <button
                 onClick={() => scrollToSection('simulator')}
-                className="text-base font-medium text-slate-700 hover:text-slate-900 text-left py-2"
+                className="btn btn-link text-decoration-none text-dark fw-semibold text-start py-2"
               >
                 Démo Interactive
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-base font-medium text-slate-700 hover:text-slate-900 text-left py-2"
+                className="btn btn-link text-decoration-none text-dark fw-semibold text-start py-2"
               >
                 Concepteur
               </button>
-              <div className="h-px bg-slate-100 my-1" />
+              <hr className="my-1 text-secondary opacity-25" />
               <button
                 onClick={onDownloadClick}
-                className="w-full text-center py-3 rounded-xl text-sm font-semibold text-white bg-linear-to-r from-orbit-primary to-orbit-accent flex items-center justify-center gap-2 shadow-lg shadow-indigo-100 cursor-pointer border-none"
+                className="btn btn-orbit-gradient w-100 py-3 rounded-3 fw-bold text-sm d-flex align-items-center justify-content-center gap-2"
               >
                 <ArrowDownToLine className="w-4 h-4" />
-                <span>TÉLÉCHARGER L'APK (EXPO)</span>
+                <span className="text-uppercase">Télécharger l'APK (Expo)</span>
               </button>
             </div>
           </motion.div>

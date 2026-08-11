@@ -69,24 +69,19 @@ export default function App() {
   };
 
   const handleDownloadClick = () => {
-    try {
-      window.open(apkUrl, '_blank', 'noopener,noreferrer');
-    } catch (e) {
-      window.location.assign(apkUrl);
-    }
-    setShowMaintenanceMessage(false);
+    setShowMaintenanceMessage(true);
   };
 
   return (
-    <div className="min-h-screen relative bg-slate-50 text-slate-800 selection:bg-orbit-accent selection:text-white antialiased">
+    <div className="min-h-screen position-relative bg-light text-dark antialiased">
       {/* Dynamic ambient grid overlay wrapping the entire ecosystem */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),_linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#fff_70%,transparent_100%)] pointer-events-none -z-10" />
+      <div className="position-absolute top-0 start-0 end-0 bottom-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),_linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#fff_70%,transparent_100%)] pointer-events-none z-n1" />
 
       {/* Global Header */}
       <Navbar onDownloadClick={handleDownloadClick} />
 
       {/* Main launch space */}
-      <main className="relative">
+      <main className="position-relative">
         
         {/* Elite hero canvas */}
         <Hero onExploreDemo={() => scrollToSection('simulator')} onDownloadClick={handleDownloadClick} />
@@ -102,104 +97,118 @@ export default function App() {
         />
 
         {/* INTERACTIVE SIMULATOR SECTION - DUAL PRESENTATION PANEL */}
-        <section id="simulator" className="py-24 relative overflow-hidden bg-slate-50 border-t border-slate-200">
-          <div className="absolute top-1/2 left-1/4 w-[500px] h-[300px] bg-orbit-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        <section id="simulator" className="py-5 position-relative overflow-hidden bg-light border-top border-secondary-subtle">
+          <div className="position-absolute top-50 start-25 w-[500px] h-[300px] bg-orbit-primary/5 rounded-full blur-[120px] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="container py-4 position-relative z-1">
+            <div className="row align-items-center g-5">
               
               {/* Left Column: Interactive Playground controls explaining sandbox actions */}
-              <div className="lg:col-span-6 space-y-8" id="sandbox-instructions-panel">
-                <div className="space-y-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-orbit-accent/15 border border-indigo-200 text-orbit-accent">
-                    <Radio className="w-3.5 h-3.5 animate-pulse text-orbit-accent" />
-                    BAC À SABLE LIVE INTERACTIF
-                  </span>
+              <div className="col-12 col-lg-6" id="sandbox-instructions-panel">
+                <div className="d-flex flex-column gap-3 mb-4">
+                  <div>
+                    <span className="inline-flex align-items-center gap-2 px-3 py-1 rounded-pill text-[10px] font-mono fw-bold uppercase tracking-wider bg-orbit-accent-15 border border-indigo-200 text-orbit-accent">
+                      <Radio className="w-3.5 h-3.5 animate-pulse text-orbit-accent" />
+                      BAC À SABLE LIVE INTERACTIF
+                    </span>
+                  </div>
                   
-                  <h2 className="font-display text-3xl sm:text-5xl font-bold text-slate-850 tracking-tight leading-none">
+                  <h2 className="font-display h1 fw-bold text-dark tracking-tight">
                     Faites l'expérience d'Orbit.
                   </h2>
-                  <p className="text-slate-650 font-light text-base sm:text-lg leading-relaxed">
+                  <p className="text-secondary fw-light fs-5">
                     Cliquez sur les contrôleurs ci-dessous pour changer le canal ou essayez directement d'interagir avec l'application simulée sur la droite.
                   </p>
                 </div>
 
                 {/* Simulated action switchers list */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="row g-3">
                   
                   {/* Option 1: Live Feed */}
-                  <button
-                    onClick={() => setSimulatorActiveTab('feed')}
-                    className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
-                      simulatorActiveTab === 'feed'
-                        ? 'bg-white border-orbit-primary shadow-[0_4px_20px_rgba(99,102,241,0.06)] text-slate-800'
-                        : 'bg-white/50 border-slate-200 hover:border-slate-350 text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-mono font-bold tracking-widest text-orbit-accent uppercase">Étape 01</span>
-                      <Orbit className="w-4 h-4 text-orbit-accent" />
-                    </div>
-                    <h4 className="font-display font-medium text-sm">Traduire le Flux Direct</h4>
-                    <p className="text-[11px] text-slate-500 mt-1">Changez les langues (FR/EN/ES) dans l’en-tête pour tester la traduction automatique.</p>
-                  </button>
+                  <div className="col-12 col-sm-6">
+                    <button
+                      onClick={() => setSimulatorActiveTab('feed')}
+                      className={`p-4 rounded-4 border text-start w-100 transition-all ${
+                        simulatorActiveTab === 'feed'
+                          ? 'bg-white border-primary shadow-sm text-dark'
+                          : 'bg-white bg-opacity-50 border-secondary-subtle text-muted'
+                      }`}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="text-xs font-mono fw-bold text-orbit-accent uppercase">Étape 01</span>
+                        <Orbit className="w-4 h-4 text-orbit-accent" />
+                      </div>
+                      <h4 className="font-display fw-semibold fs-6 mb-1">Traduire le Flux Direct</h4>
+                      <p className="small text-secondary mb-0">Changez les langues (FR/EN/ES) dans l’en-tête pour tester la traduction automatique.</p>
+                    </button>
+                  </div>
 
                   {/* Option 2: Messenger */}
-                  <button
-                    onClick={() => setSimulatorActiveTab('messenger')}
-                    className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
-                      simulatorActiveTab === 'messenger'
-                        ? 'bg-white border-orbit-primary shadow-[0_4px_20px_rgba(99,102,241,0.06)] text-slate-800'
-                        : 'bg-white/50 border-slate-200 hover:border-slate-350 text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-mono font-bold tracking-widest text-orbit-accent uppercase">Étape 02</span>
-                      <MessageSquare className="w-4 h-4 text-emerald-600" />
-                    </div>
-                    <h4 className="font-display font-medium text-sm">Vérifier le Chiffrement</h4>
-                    <p className="text-[11px] text-slate-500 mt-1">Ouvrez le chat crypté, écrivez un message et observez le handshake Diffie-Hellman.</p>
-                  </button>
+                  <div className="col-12 col-sm-6">
+                    <button
+                      onClick={() => setSimulatorActiveTab('messenger')}
+                      className={`p-4 rounded-4 border text-start w-100 transition-all ${
+                        simulatorActiveTab === 'messenger'
+                          ? 'bg-white border-primary shadow-sm text-dark'
+                          : 'bg-white bg-opacity-50 border-secondary-subtle text-muted'
+                      }`}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="text-xs font-mono fw-bold text-orbit-accent uppercase">Étape 02</span>
+                        <MessageSquare className="w-4 h-4 text-success" />
+                      </div>
+                      <h4 className="font-display fw-semibold fs-6 mb-1">Vérifier le Chiffrement</h4>
+                      <p className="small text-secondary mb-0">Ouvrez le chat crypté, écrivez un message et observez le handshake Diffie-Hellman.</p>
+                    </button>
+                  </div>
 
-                  {/* Option 3: Offline mode */}
-                  <button
-                    onClick={() => setSimulatorActiveTab('videoplus')}
-                    className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
-                      simulatorActiveTab === 'videoplus'
-                        ? 'bg-white border-orbit-primary shadow-[0_4px_20px_rgba(99,102,241,0.06)] text-slate-800'
-                        : 'bg-white/50 border-slate-200 hover:border-slate-350 text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-mono font-bold tracking-widest text-orbit-accent uppercase">Étape 03</span>
-                      <Zap className="w-4 h-4 text-amber-500" />
-                    </div>
-                    <h4 className="font-display font-medium text-sm">Mode Couchage Offline</h4>
-                    <p className="text-[11px] text-slate-500 mt-1">Coupez le réseau Wi-Fi de simulation de l’appli et lancez un stream vidéo hors-ligne.</p>
-                  </button>
+                  {/* Option 3: offline mode */}
+                  <div className="col-12 col-sm-6">
+                    <button
+                      onClick={() => setSimulatorActiveTab('videoplus')}
+                      className={`p-4 rounded-4 border text-start w-100 transition-all ${
+                        simulatorActiveTab === 'videoplus'
+                          ? 'bg-white border-primary shadow-sm text-dark'
+                          : 'bg-white bg-opacity-50 border-secondary-subtle text-muted'
+                      }`}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="text-xs font-mono fw-bold text-orbit-accent uppercase">Étape 03</span>
+                        <Zap className="w-4 h-4 text-warning" />
+                      </div>
+                      <h4 className="font-display fw-semibold fs-6 mb-1">Mode Couchage Offline</h4>
+                      <p className="small text-secondary mb-0">Coupez le réseau Wi-Fi de simulation de l’appli et lancez un stream vidéo hors-ligne.</p>
+                    </button>
+                  </div>
 
                   {/* Option 4: Video Studio */}
-                  <button
-                    onClick={() => setSimulatorActiveTab('studio')}
-                    className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
-                      simulatorActiveTab === 'studio'
-                        ? 'bg-white border-orbit-primary shadow-[0_4px_20px_rgba(99,102,241,0.06)] text-slate-800'
-                        : 'bg-white/50 border-slate-200 hover:border-slate-350 text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-mono font-bold tracking-widest text-orbit-accent uppercase">Étape 04</span>
-                      <Sparkles className="w-4 h-4 text-purple-600" />
-                    </div>
-                    <h4 className="font-display font-medium text-sm">Studio de Création</h4>
-                    <p className="text-[11px] text-slate-500 mt-1">Créez une nouvelle courte vidéo, appliquez un filtre spatial et publiez en Direct.</p>
-                  </button>
+                  <div className="col-12 col-sm-6">
+                    <button
+                      onClick={() => setSimulatorActiveTab('studio')}
+                      className={`p-4 rounded-4 border text-start w-100 transition-all ${
+                        simulatorActiveTab === 'studio'
+                          ? 'bg-white border-primary shadow-sm text-dark'
+                          : 'bg-white bg-opacity-50 border-secondary-subtle text-muted'
+                      }`}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="text-xs font-mono fw-bold text-orbit-accent uppercase">Étape 04</span>
+                        <Sparkles className="w-4 h-4 text-purple-600" />
+                      </div>
+                      <h4 className="font-display fw-semibold fs-6 mb-1">Studio de Création</h4>
+                      <p className="small text-secondary mb-0">Créez une nouvelle courte vidéo, appliquez un filtre spatial et publiez en Direct.</p>
+                    </button>
+                  </div>
 
                 </div>
               </div>
 
               {/* Right Column: Phone simulator layout */}
-              <div className="lg:col-span-6 flex items-center justify-center">
+              <div className="col-12 col-lg-6 d-flex align-items-center justify-content-center">
                 <PhoneSimulator initialTab={simulatorActiveTab} />
               </div>
             </div>
@@ -218,40 +227,40 @@ export default function App() {
       </main>
 
       {/* Futuristic elegant Footer with deep slate text and dark contrast panel at the very bottom */}
-      <footer className="py-12 border-t border-slate-200 bg-white relative overflow-hidden text-sm text-slate-500">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-linear-to-tr from-orbit-primary to-orbit-accent flex items-center justify-center">
+      <footer className="py-5 border-top border-secondary-subtle bg-white position-relative overflow-hidden text-secondary">
+        <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-4 position-relative z-1">
+          <div className="d-flex align-items-center gap-2">
+            <div className="w-6 h-6 rounded-circle bg-gradient-orbit d-flex align-items-center justify-content-center" style={{ width: '28px', height: '28px' }}>
               <Orbit className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="font-display font-bold text-slate-800 text-base">Orbit <span className="text-orbit-accent font-medium">Post</span></span>
+            <span className="font-display fw-bold text-dark fs-5">Orbit <span className="text-orbit-accent fw-normal">Post</span></span>
           </div>
 
-          <p className="text-xs font-light text-slate-500 text-center md:text-left">
+          <p className="small mb-0 text-center text-md-start fw-light">
             © {new Date().getFullYear()} Orbit Post. Tous droits réservés. Développé de manière éthique et souveraine par la Orbit Team.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 text-xs font-mono">
-            <button onClick={handleDownloadClick} className="hover:text-orbit-primary transition-colors text-slate-700 font-bold cursor-pointer bg-none border-none p-0">
+          <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-end gap-3 small font-mono">
+            <button onClick={handleDownloadClick} className="btn btn-link text-decoration-none p-0 text-dark fw-bold" style={{ fontSize: '13px' }}>
               Télécharger
             </button>
-            <span className="text-slate-300">•</span>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+            <span className="text-secondary opacity-50">•</span>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="d-inline-flex align-items-center gap-1 text-decoration-none text-dark fw-bold">
               <ion-icon name="logo-facebook"></ion-icon>
               Facebook
             </a>
-            <span className="text-slate-300">•</span>
-            <a href="https://www.instagram.com/ralph_deveveloppeur/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+            <span className="text-secondary opacity-50">•</span>
+            <a href="https://www.instagram.com/ralph_deveveloppeur/" target="_blank" rel="noopener noreferrer" className="d-inline-flex align-items-center gap-1 text-decoration-none text-dark fw-bold">
               <ion-icon name="logo-instagram"></ion-icon>
               Instagram
             </a>
-            <span className="text-slate-300">•</span>
-            <a href="https://wa.me/237689476780" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+            <span className="text-secondary opacity-50">•</span>
+            <a href="https://wa.me/237689476780" target="_blank" rel="noopener noreferrer" className="d-inline-flex align-items-center gap-1 text-decoration-none text-dark fw-bold">
               <ion-icon name="logo-whatsapp"></ion-icon>
               WhatsApp
             </a>
-            <span className="text-slate-300">•</span>
-            <a href="mailto:nativereact42@gmail.com" className="hover:text-orbit-primary transition-colors text-slate-700 font-bold">
+            <span className="text-secondary opacity-50">•</span>
+            <a href="mailto:nativereact42@gmail.com" className="text-decoration-none text-dark fw-bold">
               SUPPORT CLIENTS
             </a>
           </div>
@@ -259,66 +268,91 @@ export default function App() {
       </footer>
 
       {showPopup ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-6">
-          <div className="max-w-md w-full rounded-[28px] bg-white/95 border border-slate-200 shadow-[0_30px_80px_rgba(15,23,42,0.18)] p-8 text-slate-900">
-            <div className="space-y-4 text-center">
-              <div className="mx-auto h-14 w-14 rounded-full bg-orbit-accent/10 flex items-center justify-center text-orbit-accent text-2xl font-bold">
+        <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 z-3 p-4" style={{ backdropFilter: 'blur(8px)' }}>
+          <div className="card border-0 shadow-lg p-4 rounded-4 w-100" style={{ maxWidth: '440px' }}>
+            <div className="card-body text-center p-2">
+              <div className="mx-auto h-14 w-14 rounded-circle bg-orbit-accent-15 text-orbit-accent d-flex align-items-center justify-content-center fs-3 mb-3" style={{ width: '60px', height: '60px' }}>
                 🌐
               </div>
-              <h2 className="text-3xl font-display font-bold">Bienvenue sur Orbit</h2>
-              <p className="text-slate-600">Choisissez une option pour visiter la version web ou télécharger l’application sur Android.</p>
-            </div>
+              <h2 className="fs-3 font-display fw-bold mb-2" style={{ color: '#0f172a' }}>Bienvenue sur Orbit</h2>
+              <p className="mb-4" style={{ color: '#475569' }}>Choisissez une option pour visiter la version web ou télécharger l’application sur Android.</p>
+              
+              <div className="d-flex flex-column gap-2">
+                <button
+                  onClick={handleOpenWebVersion}
+                  className="btn btn-orbit-gradient py-2.5 rounded-3 fw-semibold text-sm"
+                >
+                  Visiter la version web
+                </button>
+                <button
+                  onClick={() => {
+                    handleDownloadClick();
+                    handleClosePopup();
+                  }}
+                  className="btn btn-outline-secondary py-2.5 rounded-3 fw-semibold text-sm"
+                >
+                  Télécharger l'application
+                </button>
+              </div>
 
-            <div className="mt-8 grid gap-4">
               <button
-                onClick={handleOpenWebVersion}
-                className="w-full rounded-2xl bg-orbit-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-orbit-accent"
+                onClick={handleClosePopup}
+                className="btn btn-link text-decoration-none mt-4 text-secondary small fw-medium text-uppercase tracking-wider"
               >
-                Visiter la version web
-              </button>
-              <button
-                onClick={() => {
-                  handleDownloadClick();
-                  handleClosePopup();
-                }}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition hover:bg-slate-100"
-              >
-                Télécharger l'application
+                Fermer
               </button>
             </div>
-
-            <button
-              onClick={handleClosePopup}
-              className="mt-6 block mx-auto text-xs font-medium uppercase tracking-[0.18em] text-slate-500 hover:text-slate-900"
-            >
-              Fermer
-            </button>
           </div>
         </div>
       ) : null}
 
       {showMaintenanceMessage ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-6">
-          <div className="max-w-md w-full rounded-[28px] bg-white/95 border border-slate-200 shadow-[0_30px_80px_rgba(15,23,42,0.18)] p-8 text-slate-900">
-            <div className="space-y-4 text-center">
-              <div className="mx-auto h-14 w-14 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 text-2xl font-bold">
-                🔧
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-75 z-3 p-4" 
+          style={{ backdropFilter: 'blur(12px)' }}
+        >
+          <motion.div 
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="card border-0 shadow-lg p-5 rounded-4 w-100 position-relative overflow-hidden" 
+            style={{ maxWidth: '440px', background: 'linear-gradient(to bottom right, #ffffff, #f8fafc)' }}
+          >
+            {/* Background decorative glow */}
+            <div className="position-absolute top-0 end-0 w-100 h-100 bg-orbit-primary opacity-5 blur-[80px] pointer-events-none rounded-circle translate-middle-y" style={{ transform: 'translate(30%, -30%)' }} />
+
+            <div className="card-body text-center p-2 position-relative z-1">
+              <div className="mx-auto rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center fs-3 mb-4 shadow-sm" style={{ width: '70px', height: '70px', border: '1px solid rgba(255, 193, 7, 0.2)' }}>
+                <ion-icon name="build-outline" style={{ fontSize: '32px' }}></ion-icon>
               </div>
-              <h2 className="text-3xl font-display font-bold">Application en Maintenance</h2>
-              <p className="text-slate-600">L'application est actuellement en maintenance. Nous travaillons dur pour vous offrir une meilleure expérience. Veuillez réessayer bientôt.</p>
+              <h2 className="fs-3 font-display fw-bold mb-3" style={{ color: '#0f172a' }}>Application en Maintenance</h2>
+              <p className="mb-4 fs-6 lh-base" style={{ color: '#475569' }}>L'application mobile est actuellement en maintenance pour vous offrir une meilleure expérience. Vous pouvez utiliser notre version web en attendant.</p>
+              
+              <div className="d-flex flex-column gap-3">
+                <button
+                  onClick={() => {
+                    setShowMaintenanceMessage(false);
+                    handleOpenWebVersion();
+                  }}
+                  className="btn btn-orbit-gradient w-100 py-3 rounded-3 fw-semibold text-sm shadow-sm d-flex justify-content-center align-items-center gap-2"
+                >
+                  <span>Continuer vers la version web</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+                <button
+                  onClick={() => setShowMaintenanceMessage(false)}
+                  className="btn btn-link text-decoration-none text-secondary small fw-medium text-uppercase tracking-wider"
+                >
+                  Annuler
+                </button>
+              </div>
             </div>
-
-            <button
-              onClick={() => setShowMaintenanceMessage(false)}
-              className="mt-8 w-full rounded-2xl bg-orbit-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-orbit-accent"
-            >
-              Comprendre
-            </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       ) : null}
-
-      {/* Timer Modal removed — downloads open directly */}
     </div>
   );
 }
